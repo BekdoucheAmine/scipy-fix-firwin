@@ -2580,9 +2580,6 @@ def get_window(window, Nx, fftbins=True, *, xp=None, device=None):
             raise ValueError(f"Window {win_name} must have one parameter but {window=}")
         return dpss(Nx, args[0], Kmax=None, sym=sym, xp=xp, device=device)
     if func is general_cosine:
-        if not (xp is None and device is None):
-            raise ValueError("'general_cosine' does not accept the parameters xp " +
-                             "and device not being None!")
         return general_cosine(Nx, *args, sym=sym)
 
     return func(Nx, *args, sym=sym, xp=xp, device=device)
